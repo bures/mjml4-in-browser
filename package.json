@@ -1,0 +1,38 @@
+{
+  "name": "mjml4-in-browser",
+  "version": "1.0.0",
+  "description": "MJML 4 packaged for being used in browser (packaged by webpack)",
+  "main": "dist/mjml.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bures/mjml4-in-browser.git"
+  },
+  "author": "Tomas Bures",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bures/mjml4-in-browser/issues"
+  },
+  "homepage": "https://github.com/bures/mjml4-in-browser#readme",
+  "dependencies": {
+    "html-minifier": "^3.5.3",
+    "htmlparser2": "^3.9.2",
+    "js-beautify": "^1.6.14",
+    "juice": "^4.1.0",
+    "lodash": "^4.17.2",
+    "warning": "^4.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "webpack": "^2.6.1"
+  }
+}
