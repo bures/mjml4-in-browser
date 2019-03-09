@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
     entry: {
         "mjml": ['./mjml/packages/mjml/src/index'],
     },
@@ -58,17 +59,21 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                ['env', {
+                                ['@babel/preset-env', {
                                     targets: {
                                         "chrome": "58",
                                         "edge": "15",
                                         "firefox": "55",
                                         "ios": "10"
                                     }
-                                }],
-                                'stage-1'
+                                }]
                             ],
-                            plugins: ['add-module-exports', 'transform-decorators-legacy', 'transform-function-bind'],
+                            plugins: [
+                                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                                ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+                                "@babel/plugin-proposal-function-bind",
+                                "@babel/plugin-proposal-export-default-from"
+                            ],
                             babelrc: false
                         }
                     }
