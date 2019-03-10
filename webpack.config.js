@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     mode: 'development',
     entry: {
-        "mjml": ['./mjml/packages/mjml/src/index'],
+        "mjml": ['./index'],
     },
     output: {
         library: 'mjml',
