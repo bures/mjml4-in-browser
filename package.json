@@ -1,6 +1,6 @@
 {
   "name": "mjml4-in-browser",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "MJML 4 packaged for being used in browser (packaged by webpack)",
   "main": "dist/mjml.js",
   "scripts": {

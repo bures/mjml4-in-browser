@@ -1,5 +1,6 @@
-import mjml2html, { registerComponent, BodyComponent } from 'mjml-core'
-import { registerDependencies } from 'mjml-validator'
+import mjml2html, { components, registerComponent, BodyComponent, HeadComponent } from 'mjml-core'
+import { dependencies, registerDependencies } from 'mjml-validator'
+import defaultSkeleton from 'mjml-core/helpers/skeleton'
 
 import { Social, SocialElement } from 'mjml-social'
 import { Navbar, NavbarLink } from 'mjml-navbar'
@@ -46,6 +47,6 @@ registerComponent(CarouselImage)
 
 registerDependencies(require('./mjml/packages/mjml/src/dependencies').default)
 
-export {registerDependencies, registerComponent, BodyComponent}
+export {defaultSkeleton, components, dependencies, registerDependencies, registerComponent, BodyComponent, HeadComponent}
 
 export default mjml2html
