@@ -1,16 +1,36 @@
-const webpack = require('webpack');
 const path = require('path');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
     entry: {
-        "mjml": ['./mjml/packages/mjml/src/index'],
+        "mjml": ['./index'],
+    },
+    optimization: {
+        minimizer: [
+            new uglifyJsPlugin({
+                uglifyOptions: {
+                    ecma: 5,    
+                    keep_classnames: true,
+                    keep_fnames: true,
+                    compress: {
+                        passes: 2,
+                        keep_fargs: false
+                    },
+                    output: {
+                      beautify: false,
+                    },
+                    mangle: true
+                }
+            })
+        ]
     },
     output: {
         library: 'mjml',
         filename: '[name].js',
         path: path.resolve(__dirname, './dist'),
-        libraryTarget: 'umd',
-        umdNamedDefine: true
+        libraryTarget: 'amd',
+        libraryExport: 'default'
     },
     resolve: {
         alias: {
@@ -58,17 +78,14 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                ['env', {
-                                    targets: {
-                                        "chrome": "58",
-                                        "edge": "15",
-                                        "firefox": "55",
-                                        "ios": "10"
-                                    }
-                                }],
-                                'stage-1'
+                                '@babel/preset-env'
                             ],
-                            plugins: ['add-module-exports', 'transform-decorators-legacy', 'transform-function-bind'],
+                            plugins: [
+                                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                                ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+                                "@babel/plugin-proposal-function-bind",
+                                "@babel/plugin-proposal-export-default-from"
+                            ],
                             babelrc: false
                         }
                     }
