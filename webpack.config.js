@@ -2,9 +2,28 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         "mjml": ['./index'],
+    },
+    optimization: {
+        minimizer: [
+            new uglifyJsPlugin({
+                uglifyOptions: {
+                    ecma: 5,
+                    keep_classnames: true,
+                    keep_fnames: true,
+                    compress: {
+                        passes: 2,
+                        keep_fargs: false
+                    },
+                    output: {
+                      beautify: false,
+                    },
+                    mangle: true
+                }
+            })
+        ]
     },
     output: {
         library: 'mjml',
