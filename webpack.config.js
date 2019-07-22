@@ -1,5 +1,5 @@
-const webpack = require('webpack');
 const path = require('path');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -78,14 +78,7 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                ['@babel/preset-env', {
-                                    targets: {
-                                        "chrome": "58",
-                                        "edge": "15",
-                                        "firefox": "55",
-                                        "ios": "10"
-                                    }
-                                }]
+                                '@babel/preset-env'
                             ],
                             plugins: [
                                 ["@babel/plugin-proposal-decorators", { "legacy": true }],
